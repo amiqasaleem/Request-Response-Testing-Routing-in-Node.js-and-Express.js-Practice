@@ -1,11 +1,15 @@
 import express from "express";
-const PORT = 3000;
+const port = 5000;
 
 const app = express();
 
-app.get('/', (req,res)=> {
-    res.send('Got a GET Request')
+//This is loading the router into the main file
+
+import items from './Routes/items.js';
+
+app.use('/api', items)
+
+app.listen(5000,()=> { 
+    console.log(`Server is working on port ${port}`);
 })
 
-
-app.listen(3000,()=> { `Server is working on port ${PORT}`})
